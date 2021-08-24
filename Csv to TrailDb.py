@@ -1,9 +1,15 @@
-COLUMNS = OrderedDict(zip(
-    ["ip","date","time","zone","cik","accession","extention","code","size","idx","norefer","noagent","find"],
-     range(0, NUMBER_OF_COLUMNS)
-))
+
+# Make sure that the python file and the csv are in same folder.
+
+from traildb import TrailDBConstructor, TrailDB
+from uuid import uuid4
+from datetime import datetime
+import csv
+
+COLUMNS = ["ip","date","time","zone","cik","accession","extention","code","size","idx","norefer","noagent","find"]
 cons = TrailDBConstructor('outputfile.tdb', COLUMNS) 
 input_path='sample.csv'
+
 with open(input_path) as input_file:
     reader = csv.reader(input_file)
     next(reader)
